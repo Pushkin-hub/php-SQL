@@ -1,0 +1,6 @@
+ATTACH DATABASE 'database.sqlite';
+
+CREATE TABLE IF NOT EXISTS 'Students' (
+    id INTERGER PRIMARY KEY AUTOINCREMENT,
+    full_name 
+)
