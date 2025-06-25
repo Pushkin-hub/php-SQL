@@ -73,3 +73,5 @@ SELECT title FROM books WHERE title LIKE '%и%';
 SELECT title, year_published FROM books WHERE year_published BETWEEN 1830 AND 1880;
 
 DELETE FROM books WHERE book_id=5;
+
+UPDATE books SET genre_id=4 WHERE book_id=4;
