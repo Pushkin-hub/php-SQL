@@ -75,4 +75,3 @@ SELECT * FROM tools WHERE id=1;
 
 SELECT * FROM employees WHERE birth_data='2001-08-12';
 SELECT * FROM employees WHERE position='Техник';
-

@@ -25,3 +25,31 @@ SELECT * FROM student_and_grade WHERE city='Краснодар';
 SELECT * FROM student_and_grade WHERE grade > 9;
 
 DROP TABLE student_and_grade;
+-- WHERE - фильтрация по условию. 
+
+SELECT * FROM empioes WHERE salary > 50000;
+
+-- LIKE - поиск строк по шаблону % 
+-- % - любое количество символов
+
+SELECT email FROM student_and_grade WHERE email LIKE '%shin%';
+SELECT * FROM student_and_grade WHERE city LIKE '%о%';
+SELECT * FROM student_and_grade WHERE birth_data LIKE '20%';
+
+-- ORDER BY - Сортирует значение по 1 или нескольким столбцам
+-- ASC - сортирует по возростанию 
+-- DESC - сортирует по выбыванию
+
+SELECT full_name, phone FROM employees
+ORDER BY full_name ASC;
+-- выбираем имя и телефон
+-- сортируем по имени в алфовитном порядке
+
+SELECT full_name, city FROM student_and_grade
+ORDER BY city DESC;
+
+-- GROUP BY - используется для объединения строк по 1 или нескольких столбцов
+
+SELECT city AS c FROM student_and_grade
+GROUP BY city;
+
