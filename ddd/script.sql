@@ -100,7 +100,7 @@ SELECT COUNT (*) FROM Loan;
 
 SELECT loan_date COUNT (*) FROM Loan GROUP BY loan_date;
 
-SELECT AVG (JULIANDATE (return_date)-JULIANDATE(loan_date)) AS 
+SELECT AVG (JULIANDATE (return_date) - JULIANDATE (loan_date)) AS 
 duration_table FROM Loan WHERE return_date IS NOT NULL;
 
 
