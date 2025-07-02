@@ -61,8 +61,10 @@ GROUP BY city;
 -- MAX () - максимально значение
 -- AS - задаем псевдоним
 -- JULIANDAY - возвращает число дней
-JULIANDAY (finish_data) - JULIANDAY (start_data) 
+-- JULIANDAY (finish_data) - JULIANDAY (start_data) 
+
 -- DIATANCT - получаем уникальные значения
+
 
 -- Арифмитичемкие операторы:
 -- - (discount-10)
@@ -84,5 +86,5 @@ JULIANDAY (finish_data) - JULIANDAY (start_data)
 -- IN - проверка на содержание значения
 -- IS NUL / IS NOT NULL - проверка NULL
 
-
+INSERT OR IGNORE INTO
 

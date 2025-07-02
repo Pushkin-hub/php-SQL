@@ -64,6 +64,46 @@ SELECT * FROM Member;
 SELECT * FROM Loan;
 SELECT * FROM Fines;
 
-DELETE FROM Member;
-DROP TABLE Member;
+SELECT * FROM Books WHERE year_published > 1900;
+
+SELECT * FROM Books WHERE genre = 'Роман';
+
+SELECT COUNT (*) FROM Books
+
+SELECT author, COUNT (*) AS all_books FROM Books GROUP BY author;
+
+SELECT MIN (year_published) FROM Books;
+
+SELECT MAX (year_published) FROM Books;
+
+SELECT AVG (year_published) FROM Books;
+
+SELECT genre COUNT (*) AS qu_books FROM Books GROUP BY genre;
+
+SELECT DISTINCT genre From Books;
+
+SELECT * FROM Members WHERE active = 1;
+
+SELECT * FROM Members WHERE join_date > 2022;
+
+SELECT COUNT (*) FROM Members;
+
+SELECT MIN (join_date) FROM Members;
+
+SELECT MAX (join_date) FROM Members;
+
+SELECT * FROM Loan WHERE return_date IS NULL;
+
+SELECT * FROM Loan WHERE loan_date > '01-03-2023'; 
+
+SELECT COUNT (*) FROM Loan;
+
+SELECT loan_date COUNT (*) FROM Loan GROUP BY loan_date;
+
+SELECT AVG (JULIANDATE (return_date)-JULIANDATE(loan_date)) AS 
+duration_table FROM Loan WHERE return_date IS NOT NULL;
+
+
+
+
 
