@@ -29,7 +29,7 @@ CREATE TABLE 'Empoyees' (
 
 
 
-CREATE TABLE Companies (
+CREATE TABLE 'Projects' (
     company_id INTEGER PRIMARY KEY AUTOINCREMENT,
     company_name TEXT NOT NULL,
     founded_year INTEGER CHECK (year_published > 0));
