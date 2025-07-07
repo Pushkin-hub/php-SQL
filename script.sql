@@ -88,3 +88,31 @@ GROUP BY city;
 
 INSERT OR IGNORE INTO
 
+-- PRIMARY KEY - первичный ключ
+-- Не допускается NOT NULL
+-- В таблице допускается только один PRIMARY KEY
+
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    name TEXT NOT NULL)
+
+-- FOREIGN KEY - Вторичный ключ
+-- Ссылается на первичный ключ другой таблицы
+-- Обеспечивает целосность данных
+-- Используется для создания связей между таблицами
+
+-- ПРИМЕР:
+CREATE TABLE Enrollments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER,
+    course_id INTEGER,
+    FOREIGN KEY (student_id) REFERENCES students (student_id),
+    FOREIGN KEY (course_id) REFERENCES students (course_id));
+
+-- ON DELETE
+-- ON UPDATE
+
+
+
+
+
