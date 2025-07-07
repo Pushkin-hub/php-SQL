@@ -6,7 +6,8 @@ company_name TEXT NOT NULL,
 founded_year DATE NOT NULL);
 
 INSERT INTO Companies (company_name, founded_year) VALUES 
-('Гастраном', '22-09-2000');
+('Гастраном', '22-09-2000'),
+();
 
 CREATE TABLE 'Departments' (
 dept_id INTEGER NOT NULL,
@@ -32,7 +33,7 @@ FOREIGN KEY ('dept_id') REFERENCES 'Departments' ('dept_id'));
 CREATE TABLE 'Projects' (
 project_id INTEGER NOT NULL,
 project_name TEXT NOT NULL,
-budget ,
+budget INTEGER,
 dept_id INTEGER,
 PRIMARY KEY ('project_id' AUTOINCREMENT)
 FOREIGN KEY ('dept_id') REFERENCES 'Departments' ('dept_id'));
