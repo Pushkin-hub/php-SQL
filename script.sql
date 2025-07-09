@@ -86,15 +86,15 @@ GROUP BY city;
 -- IN - проверка на содержание значения
 -- IS NUL / IS NOT NULL - проверка NULL
 
-INSERT OR IGNORE INTO
+-- INSERT OR IGNORE INTO
 
 -- PRIMARY KEY - первичный ключ
 -- Не допускается NOT NULL
 -- В таблице допускается только один PRIMARY KEY
 
-CREATE TABLE student (
-    id INT PRIMARY KEY,
-    name TEXT NOT NULL)
+-- CREATE TABLE student (
+--     id INT PRIMARY KEY,
+--     name TEXT NOT NULL)
 
 -- FOREIGN KEY - Вторичный ключ
 -- Ссылается на первичный ключ другой таблицы
@@ -102,15 +102,45 @@ CREATE TABLE student (
 -- Используется для создания связей между таблицами
 
 -- ПРИМЕР:
-CREATE TABLE Enrollments (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    student_id INTEGER,
-    course_id INTEGER,
-    FOREIGN KEY (student_id) REFERENCES students (student_id),
-    FOREIGN KEY (course_id) REFERENCES students (course_id));
+-- CREATE TABLE Enrollments (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT,
+--     student_id INTEGER,
+--     course_id INTEGER,
+--     FOREIGN KEY (student_id) REFERENCES students (student_id),
+--     FOREIGN KEY (course_id) REFERENCES students (course_id));
 
 -- ON DELETE
 -- ON UPDATE
+
+-- SELECT * (SELECT);
+
+-- 1. Скалярные значения (одно единственное значение)
+-- возвращает одно значение
+-- имеет конкретный тип данных
+
+-- В SEKECT:
+
+-- SELECT product_name, (SELECT MAX(price)FROM prodects) AS max_price FROM prodects;
+
+-- 2. Множество значений
+
+-- 3. Целую таблицу
+
+-- Разбор конкретного запроса:
+
+-- SELECT project_name FROM Projects WHERE dept_id IN (
+-- SELECT dept_id FROM Departments WHERE dept_id NOT IN (
+-- SELECT dept_id FROM Employees));
+
+
+
+
+
+
+
+
+
+
 
 
 
