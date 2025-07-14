@@ -132,6 +132,23 @@ GROUP BY city;
 -- SELECT dept_id FROM Departments WHERE dept_id NOT IN (
 -- SELECT dept_id FROM Employees));
 
+-- INNER JOIN - возвращает строки, которые имеют совпадения в обоих таблицах
+-- LEFT JOIN - возвращает все строки из левой таблицы и совпадающие из правой
+-- RIGHT JOIN - возвращает все строки из правой таблицы и совпадающие из левой
+-- FULL JOIN - возвращает все строки, когда есть совпадения, хотя бы в одной из таблиц
+-- CROSS JOIN - декартово произведение: каждая строка из первой таблици соединяется с каждой из второй таблицы
+
+-- UNION - соединяет без дублирования
+-- UNION ALL - соединяет с дублированием
+
+-- SELECT * FROM table1
+-- INNER JOIN table2
+-- ON table1.column_name = table2.column_name
+
+
+
+
+
 
 
 
