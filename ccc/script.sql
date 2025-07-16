@@ -93,3 +93,6 @@ INSERT INTO Visits (client_id, class_id, visit_date) VALUES
 (5, 5, '2023-08-04 19:00:00'),
 (6, 6, '2023-08-05 17:00:00'),
 (7, 7, '2023-08-06 08:00:00');
+
+
+
