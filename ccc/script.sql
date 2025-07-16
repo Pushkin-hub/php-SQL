@@ -2,11 +2,11 @@ ATTACH DATABASE 'first.db';
 
 CREATE TABLE Clients (
     client_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
     birth_date DATE,
-    phone TEXT,
-    email TEXT,
+    phone VARCHAR(20),
+    email VARCHAR(100),
     reg_date DATE DEFAULT CURRENT_DATE
 );
 
@@ -21,11 +21,11 @@ INSERT INTO Clients (first_name, last_name, birth_date, phone, email, reg_date) 
 
 CREATE TABLE Trainers (
     trainer_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    specialty TEXT,
-    phone TEXT,
-    email TEXT
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    specialty VARCHAR(100),
+    phone VARCHAR(20),
+    email VARCHAR(100)
 );
 
 INSERT INTO Trainers (first_name, last_name, specialty, phone, email) VALUES
@@ -42,8 +42,8 @@ CREATE TABLE Subscriptions (
     client_id INT NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    type TEXT,
-    price TEXT,
+    type VARCHAR(50),
+    price DECIMAL(10,2),
     CONSTRAINT fk_sub_client FOREIGN KEY (client_id) REFERENCES Clients(client_id) ON DELETE CASCADE
 );
 
@@ -58,7 +58,7 @@ INSERT INTO Subscriptions (client_id, start_date, end_date, type, price) VALUES
 
 CREATE TABLE GroupClasses (
     class_id INT AUTO_INCREMENT PRIMARY KEY,
-    class_name TEXT NOT NULL,
+    class_name VARCHAR(100) NOT NULL,
     trainer_id INT NOT NULL,
     schedule DATETIME NOT NULL,
     duration_minutes INT NOT NULL,
@@ -93,6 +93,56 @@ INSERT INTO Visits (client_id, class_id, visit_date) VALUES
 (5, 5, '2023-08-04 19:00:00'),
 (6, 6, '2023-08-05 17:00:00'),
 (7, 7, '2023-08-06 08:00:00');
+
+SELECT * FROM Clients;
+SELECT * FROM Trainers;
+SELECT * FROM Subscriptions;
+SELECT * FROM GroupClasses;
+SELECT * FROM Visits;
+
+SELECT * FROM Clients WHERE gender = 'Ж';
+
+SELECT * FROM Trainers ORDER BY last_name ASC, first_name ASC;
+
+SELECT * FROM GroupClasses ORDER BY schedule LIMIT 3;
+
+SELECT * FROM Clients WHERE email LIKE '%@gmail.com';
+
+SELECT * FROM Trainers WHERE salary BETWEEN 40000 AND 60000;
+
+SELECT * FROM Subscriptions WHERE YEAR(start_date) = 2023;
+
+SELECT DISTINCT specialty FROM Trainers WHERE specialty IS NOT NULL AND specialty <> '';
+
+SELECT COUNT(*) AS total_clients FROM Clients;
+
+SELECT gender, COUNT(*) AS count_clients FROM Clients GROUP BY gender;
+
+ASELECT MIN(salary) AS min_salary, MAX(salary) AS max_salary, AVG(salary) AS avg_salary
+FROM Trainers WHERE salary IS NOT NULL;
+
+SELECT c.client_id, c.first_name, c.last_name, s.type AS subscription_type
+FROM Clients c LEFT JOIN Subscriptions s ON c.client_id = s.client_id
+ORDER BY c.last_name, c.first_name;
+
+SELECT DISTINCT c.client_id, c.first_name, c.last_name, s.type FROM Clients c
+JOIN Subscriptions s ON c.client_id = s.client_id
+WHERE s.type LIKE '%Годовой%' ORDER BY c.last_name, c.first_name;
+
+SELECT t.trainer_id,t.first_name, t.last_name, t.specialty, gc.class_id, gc.class_name, gc.schedule
+FROM Trainers t
+LEFT JOIN GroupClasses gc ON t.trainer_id = gc.trainer_id ORDER BY t.last_name, t.first_name;
+
+SELECT gcv.visit_id, gcv.client_id, c.first_name, c.last_name, gcv.class_id, gc.class_name, gcv.visit_date
+FROM GroupClassVisits gcv JOIN Clients c ON gcv.client_id = c.client_id
+JOIN GroupClasses gc ON gcv.class_id = gc.class_id ORDER BY gcv.visit_date DESC;
+
+SELECT client_id, first_name, last_name, COUNT(*) AS visit_count
+FROM GroupClassVisits JOIN Clients c ON client_id = client_id
+GROUP BY client_id, first_name, last_name
+HAVING COUNT(*) > 2 ORDER BY visit_count DESC;
+
+SELECT * FROM Trainers WHERE salary > (SELECT AVG(salary) FROM Trainers WHERE salary IS NOT NULL);
 
 
 
