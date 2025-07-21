@@ -146,7 +146,12 @@ GROUP BY city;
 -- ON table1.column_name = table2.column_name
 
 
+-- UPDATE table_name SET column_1 = value_1 WHERE condition;
+-- UPDATE - указывает таблицу, которую мы хотим изменить
+-- SET - указывает новые столбцы
+-- WHERE - фильтрует строки, которые будут обновлены
 
+-- CASE - позволяет возвращать значения в зависимости от условий
 
 
 
