@@ -26,13 +26,13 @@ UPDATE Movies SET rating = 8.5 WHERE title = 'Название_фильма';
 
 ALTER TABLE Movies ADD COLUMN release_year INT;
 
-UPDATE Movies SET release_year = 2010 WHERE title = 'Inception';
-UPDATE Movies SET release_year = 1972 WHERE title = 'The Godfather';
-UPDATE Movies SET release_year = 1995 WHERE title = 'Toy Story';
-UPDATE Movies SET release_year = 1997 WHERE title = 'Titanic';
-UPDATE Movies SET release_year = 2019 WHERE title = 'Avengers: Endgame';
-UPDATE Movies SET release_year = 2019 WHERE title = 'Parasite';
-UPDATE Movies SET release_year = 2008 WHERE title = 'The Dark Knight';
+UPDATE Movies SET release_year = 2010 WHERE title = 'Зарождение';
+UPDATE Movies SET release_year = 1972 WHERE title = 'Крестный отец';
+UPDATE Movies SET release_year = 1995 WHERE title = 'История игрушек';
+UPDATE Movies SET release_year = 1997 WHERE title = 'Титаник';
+UPDATE Movies SET release_year = 2019 WHERE title = 'Мстители: Финал';
+UPDATE Movies SET release_year = 2019 WHERE title = 'Паразит';
+UPDATE Movies SET release_year = 2008 WHERE title = 'Темный рыцарь';
 
 ALTER TABLE Movies ADD COLUMN is_blockbuster INTEGER DEFAULT 0;
 
