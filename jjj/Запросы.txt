@@ -1,0 +1,71 @@
+// Мои запросы:
+
+SELECT * FROM Guests;
+SELECT * FROM RoomTypes;
+SELECT * FROM RoomStatus;
+SELECT * FROM Rooms;
+SELECT * FROM Departments;
+SELECT * FROM Employees;
+SELECT * FROM EmployeeDetails;
+SELECT * FROM Reservations;
+SELECT * FROM Services;
+SELECT * FROM ReservationServices;
+
+SELECT full_name, phone, email FROM Guests;
+
+SELECT room_number, type_name FROM Rooms
+JOIN RoomTypes ON Rooms.room_type_id = RoomTypes.room_type_id;
+
+SELECT service_name, price FROM Services;
+
+SELECT full_name, position FROM Employees
+JOIN Departments ON Employees.department_id = Departments.department_id
+WHERE department_name = 'Ресепшен';
+
+SELECT * FROM Reservations WHERE guest_id = 1;
+
+SELECT full_name FROM Guests
+WHERE guest_id IN (
+    SELECT guest_id FROM Reservations
+    WHERE julianday(check_out_date) - julianday(check_in_date) > 5
+);
+
+SELECT r.reservation_id, g.full_name, rm.room_number, r.check_in_date, r.check_out_date
+FROM Reservations r
+JOIN Guests g ON r.guest_id = g.guest_id
+JOIN Rooms rm ON r.room_id = rm.room_id;
+
+SELECT e.full_name, e.position, d.department_name
+FROM Employees e
+JOIN Departments d ON e.department_id = d.department_id;
+
+SELECT s.service_name, rs.quantity
+FROM ReservationServices rs
+JOIN Services s ON rs.service_id = s.service_id
+WHERE rs.reservation_id = 10;
+
+SELECT room_number, status_name, type_name
+FROM Rooms
+JOIN RoomStatus ON Rooms.status_id = RoomStatus.status_id
+JOIN RoomTypes ON Rooms.room_type_id = RoomTypes.room_type_id;
+
+SELECT r.reservation_id, g.full_name as guest, e.full_name as employee, r.check_in_date
+FROM Reservations r
+JOIN Guests g ON r.guest_id = g.guest_id
+JOIN Employees e ON r.employee_id = e.employee_id;
+
+SELECT COUNT(*) as total_guests FROM Guests;
+
+SELECT type_name, AVG(price_per_night) as avg_price FROM RoomTypes GROUP BY type_name;
+
+SELECT guest_id, COUNT(*) as reservations_count FROM Reservations GROUP BY guest_id;
+
+SELECT SUM(s.price * rs.quantity) as total_services_cost
+FROM ReservationServices rs
+JOIN Services s ON rs.service_id = s.service_id
+WHERE rs.reservation_id = 5;
+
+SELECT d.department_name, COUNT(e.employee_id) as employee_count
+FROM Departments d
+LEFT JOIN Employees e ON d.department_id = e.department_id
+GROUP BY d.department_name;
