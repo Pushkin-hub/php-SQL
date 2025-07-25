@@ -60,18 +60,21 @@ SELECT * FROM books;
 SELECT title, year_published FROM books
 ORDER BY year_published DESC;
 
+SELECT author_name, birth_year FROM authors
+ORDER BY birth_year DESC;
+
 SELECT title, pages FROM books WHERE pages > 500;
 
 SELECT title, year_published FROM books WHERE year_published < 1900;
 
 SELECT title FROM books WHERE title > 10;
 
-SELECT genre_id FROM books;
+SELECT genre_id, title FROM books;
 
 SELECT title FROM books WHERE title LIKE '%и%';
 
 SELECT title, year_published FROM books WHERE year_published BETWEEN 1830 AND 1880;
 
-DELETE FROM books WHERE book_id=5;
+DELETE FROM books WHERE book_id=9;
 
 UPDATE books SET genre_id=4 WHERE book_id=4;
